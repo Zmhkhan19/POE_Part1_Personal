@@ -1,0 +1,53 @@
+
+    h2 {background-color: goldenrod;
+        text-shadow: 10px; 
+        Color:Gold;}
+
+    h3{font-size: 23px;
+        color: goldenrod;
+        font-style: italic;
+    }
+
+nav{
+    background-color: burlywood;
+    color: white;
+    text-align: center;
+   
+}
+
+nav ul{
+    
+}
+
+nav li{
+display: inline-block;
+margin-left: 10px;
+margin-right: 10px;
+padding-top: 5px;
+
+}
+/* Box Width= 40% */
+
+nav a{
+    text-decoration: none;
+    color: white;
+    font-family: 'Franklin Gothic Medium';
+    font-weight: lighter;
+    padding: 4px 10px
+}
+
+nav a:hover{
+    color: gold;
+    background-color: brown;
+    height: 50px;
+    text-decoration-style: dotted; 
+}
+
+
+footer{
+    background-color: black;
+    color: aliceblue;
+}
+img{
+    padding-left: px;
+}
