@@ -53,9 +53,7 @@ footer{
     background-color: black;
     color: aliceblue;
 }
-img{
-    padding-left: px;
-}
+
 
 @media screen and  (0px <= width <= 960px){
     nav a{
