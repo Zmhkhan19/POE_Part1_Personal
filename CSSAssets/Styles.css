@@ -1,11 +1,16 @@
 
     h2 {background-color: goldenrod;
         text-shadow: 10px; 
-        Color:Gold;}
+        Color:Gold;
+        text-align: center;
+        
+    }
 
     h3{font-size: 23px;
         color: goldenrod;
         font-style: italic;
+        text-align: center;
+        text-decoration: underline;
     }
 
 nav{
@@ -51,3 +56,20 @@ footer{
 img{
     padding-left: px;
 }
+
+@media screen and  (0px <= width <= 960px){
+    nav a{
+        color: black;
+    }
+    h2{
+        color: black;
+    }
+
+    p{
+        font-size: 19px;
+    }
+
+
+}
+
+
