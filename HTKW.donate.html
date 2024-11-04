@@ -3,9 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>HTKW.donate</title>
         <link href="CSSAssets/Styles.css" rel="stylesheet" type="text/css"/>
-        <div class="header">
+        <meta  name="description" content="This is a description of the website">
+
+        <title>HTKW.donate</title>
+        <div class="header"style="background-color: bisque;">
         <img alt="Logo" width="150"src="Assets/HTKW Logo.png">
         <div class="subheading">
         <h2>Help Keep Them Warm</h2>
@@ -19,8 +21,9 @@
     </div>
     </div>
     </head>
-<body>
+<body onload="DateTime(), lightbox()">
     <div class="main">
+        <img alt="Donated-clothes" width="100%" height="300"src="Assets/Donated-clothes.webp">
     <p>
         Do you have anything that doesn't fit right anymore? Maybe something you've outgrown or don't care to use anymore?
         <br>
@@ -30,8 +33,10 @@
     </div>
 <div class="footer">
     <footer>
+        <p id="datetime">
+        </p>  
     <p>
-    <br>
+  
     <b>Contact Information 
     <br>
     <li>
@@ -54,8 +59,51 @@
 <b>&copy; 2024 - Help Them Keep Warm</b>
 </p>
 </footer>
+
 </div>
+
+<script type="text/javascript">
+
+    function DateTime(){
+      const now = new  Date();
+const hours = now.getHours();
+      document.getElementById("datetime").textContent=now
+    }
+
+    
+function lightbox(){
+    const lightbox=document.getElementById('lightbox');
+    const lightboxImg=document.getElementById('lightbox-img');
+    const caption=document.getElementById('caption');
+
+    const images=document.querySelectorAll('img')
+
+    images.forEach(image=>{
+        image.addEventListener('click',function(){
+            lightbox.style.display="flex";
+            lightboxImg.src=this.src
+            caption.innerHTML=this.alt
+        });   
+        
+        const closeBtn=document.querySelector(".close");
+    closeBtn.addEventListener('click',function(){
+        lightbox.style.display = "none"
+    });
+
+    });
+  }  
+       </script>
 </body>
+
+<style>
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+</style>
 
 <!-- Code Attribution:
 Varsity College. 2024

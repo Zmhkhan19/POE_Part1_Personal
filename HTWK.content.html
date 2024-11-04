@@ -3,10 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>HTKW.content</title>
+         <link href="CSSAssets/Styles.css" rel="stylesheet" type="text/css"/>
+         <meta  name="description" content="This page contains examples of HTKW's supplies"/>
 
-        <link href="CSSAssets/Styles.css" rel="stylesheet" type="text/css"/>
-        <div class="header">
+        <title>HTKW.content</title>
+        <div class="header"style="background-color: bisque;">
         <img alt="image" width="150"src="Assets/HTKW Logo.png">
         <div class="subheading">
         <h2>Help Keep Them Warm</h2>
@@ -20,27 +21,37 @@
     </div>
     </div>
     </head>
-<body>
+    <script src="scripts.js" defer></script>
 
-    <div class="main">
-    <p style="background-color: bisque;">
-    <img alt="image" width="350"src="Assets/My_closet.jpg">
+<body onload="DateTime(), lightbox()">
+
+    <div class="main"> 
+        
+        <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img alt="" class="lightbox-content" id="lightbox-img">
+    <div class="caption" id="caption"></div>
+    </div>
+
+    <p style="background-color: bisque; font-size: 50px;">
+    <img style="width: 100%; height: 450px;" alt="image" width="350"src="Assets/My_closet.jpg">
     <br>  
     We provide an assortment of Different Clothing options for the poor and underprivaledged.
     <br>
     These options include but are not limited to:
     <br>
+    <br>
     <b>Pure Wool scarfs</b>  
     <br>
-    <img alt="image" width="290"src="Assets/VORIAN_-_Urban_Knight_Men'sUnisex_Pure_Wool_Scarf.jpg">
+    <img alt="Scarf" width="290"src="Assets/VORIAN_-_Urban_Knight_Men'sUnisex_Pure_Wool_Scarf.jpg">
     <br>
     <b>Leather Gloves</b>
     <br>
-    <img alt="image" width="290"src="Assets/62-147-BI_Gloves,_Flight.jpg">
+    <img alt="gloves" width="290"src="Assets/62-147-BI_Gloves,_Flight.jpg">
    <br>
    <b>Fur coats</b> 
    <br>
-    <img alt="image" width="290"src="Assets/Goldin_Feldman_Fur_Coat.jpg">
+    <img alt="coat" width="290"src="Assets/Goldin_Feldman_Fur_Coat.jpg">
    <br>
    <b>Thermal Head Overs</b>
    <br>
@@ -48,26 +59,65 @@
     <br>
     <b>We make sure our clients always leave with a warm smile on thier faces</b>
     <br>
-    <img alt="image" width="290"src="Assets/Snowmen on the Square.jpg">
+    <img alt="snowman" width="290"src="Assets/Snowmen on the Square.jpg">
    <br>
    <b>We offer an assortment of scarfs and coats for all ages.</b>
     <br>
-    <img alt="image" width="290"src="Assets/Three women outdoors in winter clothes.jpg">
-    <img alt="image" width="290"src="Assets/croaker con crantos.jpg">
+    <img alt="three women" width="290"src="Assets/Three women outdoors in winter clothes.jpg">
+    <img alt="kids" width="290"src="Assets/croaker con crantos.jpg">
    <br>
    If you would like to add to our inventory please see to our Donation page. The link can be found above.
-
+        <br>
+        Additionally,  if you would like to volunteer with us, please see our Volunteer page. The link can be found above.
+    
     </p>
+        
+   
     </div>
     <div class="footer">
         <footer>
+            <p id="datetime">
+            </p>  
         <p>
-      <br>  
-    
     <b>&copy; 2024 - Help Them Keep Warm</b>
     </p>
 </footer>
     </div>
+
+   
+    
+  <script type="text/javascript">
+
+    function DateTime(){
+      const now = new  Date();
+const hours = now.getHours();
+      document.getElementById("datetime").textContent=now
+    };
+
+    function lightbox(){
+    const lightbox=document.getElementById('lightbox');
+    const lightboxImg=document.getElementById('lightbox-img');
+    const caption=document.getElementById('caption');
+
+    const images=document.querySelectorAll('img')
+
+    images.forEach(image=>{
+        image.addEventListener('click',function(){
+            lightbox.style.display="flex";
+            lightboxImg.src=this.src
+            caption.innerHTML=this.alt
+        });   
+        
+        const closeBtn=document.querySelector(".close");
+    closeBtn.addEventListener('click',function(){
+        lightbox.style.display = "none"
+    });
+
+    });
+  }  
+
+
+       </script>
 </body>
 <!-- Code Attribution:
 Varsity College. 2024

@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="CSSAssets/Styles.css" rel="stylesheet" type="text/css"/>
-
+    <!--<meta  http-equiv="X-UA-Compatible" content="ie=edge">-->
+    <meta name="description" content="Home page/ Here is where you add your description of the site with your chosen key words incorporated"/>
     <title>HTKW.home</title>
-    <div class="header">
+    <div class="header" style="background-color: bisque;">
     <img alt="Logo" width="150"src="Assets/HTKW Logo.png">
     <div class="subheading">
     <h2>Help Keep Them Warm</h2>
@@ -21,10 +22,13 @@
 </div>
 </div>
 </head>
-<body>
+<body onload="DateTime()">
     <div class="main">
-    <p> <h3 style="font-size: 23px;">Hello and Welcome to the Help Them Keep Warm official website.</h3>
-        <img alt="image" width="290"src="Assets/A_warm_cloths_booth.jpg">
+    <p> 
+    <h3 style="font-size: 23px;">Hello and Welcome to the Help Them Keep Warm official website.</h3>
+     <p style="background-color: bisque;">   
+     <img alt="booth" width="290"src="Assets/A_warm_cloths_booth.jpg">
+        
         <br>
         If you are already familer with our peviouse ventures, please proceed to the 'Content' page.
         <br>
@@ -33,17 +37,55 @@
         If you would like to make a donation, please proceed to the 'Donate' page.
         <br>
         If you would like to volunteer to assist us in our goals, please proceed to the 'Volunteer' page.
+        <br>
+
+        <br>
+        If you would like to receivie our weekly news letter cronicalling our milestones, achievements and locations please see the form below.
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScITHUzp3jWqD0m6Ig7gToJADeIYw_dwEsetFtCzisFPJCi1w/viewform?embedded=true" width="640" height="569" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+   
     </p>
     </div>
-
     <footer>
+        <p id="datetime">
+        </p>  
     <div class="footer">
         <p>
-        <br>
     <b>&copy; 2024 - Help Them Keep Warm</b>
     </p>
     </div>
 </footer>
+
+<script type="text/javascript">
+
+    function DateTime(){
+      const now = new  Date();
+const hours = now.getHours();
+      document.getElementById("datetime").textContent=now
+    }
+
+    
+function lightbox(){
+    const lightbox=document.getElementById('lightbox');
+    const lightboxImg=document.getElementById('lightbox-img');
+    const caption=document.getElementById('caption');
+
+    const images=document.querySelectorAll('img')
+
+    images.forEach(image=>{
+        image.addEventListener('click',function(){
+            lightbox.style.display="flex";
+            lightboxImg.src=this.src
+            caption.innerHTML=this.alt
+        });   
+        
+        const closeBtn=document.querySelector(".close");
+    closeBtn.addEventListener('click',function(){
+        lightbox.style.display = "none"
+    });
+
+    });
+  }  
+       </script>
 </body>
 
 <!-- Code Attribution:

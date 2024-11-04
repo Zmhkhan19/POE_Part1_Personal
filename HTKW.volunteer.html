@@ -3,9 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="CSSAssets/Styles.css" rel="stylesheet" type="text/css"/>
+      <meta  name="description" content="This page allows the user to submit their Information do that they may apply for volunteer  work">
+
     <title>HTKW.volunteer</title>
-    <link href="CSSAssets/Styles.css" rel="stylesheet" type="text/css"/>
-    <div class="header">
+    <div class="header"style="background-color: bisque;">
     <img  alt="Logo" width="150"src="Assets/HTKW Logo.png">
     <div class="subheading">
     <h2>Help Keep Them Warm</h2>
@@ -19,29 +21,60 @@
 </div>
 </div>
 </head>
-<body>
+<body onload="DateTime()">
+  <div class ="container">
+
+ <img  alt="" width="100%" height="500" src="Assets/Volunter.png" >
+  </div>
     <div class="main">
     <p>
+     
       Have some free time off? Looking to spend it doing some good?
       Please Submit your First and Last name, your age, your email address, your phone number and (if employed)your occupation and we will step up a meeting. Feel free to contact us if you have any questions. 
     
-      <form action="#" method="post">
+      <form id="contactForm" action="mailto:{emailaddress}" method="post">
         <label for="fname">First name</label><br>
-        <input type="text" id="fname" name="name" required><br><br>
+        <input id="fname" name="name"><br><br>
+        <span id="fnameError" style="color: red;"></span><br><br>
+      
         <label for="lname">Last name</label><br>
-        <input type="text" id="lname" name="name" required><br><br>
+        <input type="text" id="lname" name="name"><br><br>
+        <span id="lnameError" style="color: red;"></span><br><br>
+
         <label for="email">Email Address</label><br>
-        <input type="email" id="email" name="email" required><br><br>
+        <input  id="email" name="email"><br><br>
+        <span id="emailError" style="color: red;"></span><br><br>
+
         <label for="phone">Phone No.</label><br>
-        <input type="tel" id="phone"name="phone" 
-        pattern="[0-9]{10}" required><br><br>
+        <input id="phone"name="phone"><br><br>
+        <span id="phoneError" style="color: red;"></span><br><br>
         <input type="submit" value="Submit">
     </form>
+
+
+
+    <!-- <form id="contactForm" action="#" method="post"
+    enctype="text/plain">
+       <label for="name">Name</label>
+       <input  id="name" name="name"><br><br>
+       <span id="nameError"style="color: red;"> </span><br><br>
+       <label for="email">Email</label>
+       <input  id="email"
+       name="email" ><br><br>
+       <span id="emailError"style="color: red;"> </span><br><br>
+       <label for="phone">Phone</label>
+       <input type="tel" id="phone"name="phone"><br><br>
+       <span id="phoneError"style="color: red;"> </span><br><br>
+
+       <input style="width: 100px;" type="submit"   value="Submit"> -->
 
     </p>
 </div>
     <div class="footer">
       <footer>
+        <p id="datetime">
+    
+        </p>
          <p>
         <br>
         <b>Contact Information 
@@ -67,7 +100,140 @@
   </p>
 </footer>
   </div>
+
+  <script type="text/javascript">
+
+    function DateTime(){
+      const now = new  Date();
+const hours = now.getHours();
+      document.getElementById("datetime").textContent=now
+    }
+       
+
+
+    document.getElementById("contactForm").addEventListener("submit", function(event){
+        console.log('test')
+        event.preventDefault();
+
+
+        document.getElementById("fnameError").textContent = "";
+        document.getElementById("lnameError").textContent = "";
+        document.getElementById("emailError").textContent = "";
+        document.getElementById("phoneError").textContent = "";
+        console.log("here");
+//                    var name = document.getElementById("name").value;
+        let formIsValid = true;
+
+        const  fname = document.getElementById("fname").value;
+        if (fname === ""){
+            document.getElementById("fnameError").textContent = "Please enter your name";
+            formIsValid = false;
+        }
+        if(!isNaN(fname)){
+            document.getElementById("fnameError").textContent = "Please enter a valid name";
+            formIsValid = false;
+        }
+
+        const   lname = document.getElementById("lname").value;
+if (lname === ""){
+        document.getElementById("lnameError").textContent = "Please enter a valid name";
+        formIsValid = false;
+        }
+        if(!isNaN(lname)){
+          document.getElementById("lnameError").textContent =  "Please enter a valid name";
+formIsValid = false;
+}
+
+        const  email = document.getElementById("email").value;
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+        if (email === ""){
+            document.getElementById("emailError").textContent = "Please enter your email";
+            formIsValid = false;
+
+        } else if(!email.includes("@")){
+            document.getElementById("emailError").textContent = "Email required";
+            formIsValid = false;
+        }
+
+        const phone  = document.getElementById("phone").value;
+
+        if (phone === ""){
+            document.getElementById("phoneError").textContent = "Please enter your phone number";
+            formIsValid = false;
+        }
+        if(isNaN(phone)){
+          document.getElementById("phoneError").textContent = "Please enter a valid phone number";
+          formIsValid = false;
+        }
+
+        if(formIsValid) {
+            alert("Form submitted successfully");
+             this.submit();
+        }
+    }
+
+)
+
+function lightbox(){
+    const lightbox=document.getElementById('lightbox');
+    const lightboxImg=document.getElementById('lightbox-img');
+    const caption=document.getElementById('caption');
+
+    const images=document.querySelectorAll('img')
+
+    images.forEach(image=>{
+        image.addEventListener('click',function(){
+            lightbox.style.display="flex";
+            lightboxImg.src=this.src
+            caption.innerHTML=this.alt
+        });   
+        
+        const closeBtn=document.querySelector(".close");
+    closeBtn.addEventListener('click',function(){
+        lightbox.style.display = "none"
+    });
+
+    });
+  }  
+
+
+
+           
+
+    
+// <form action="#" method="post">
+//         <label for="fname">First name</label><br>
+//         <input type="text" id="fname" name="name" required><br><br>
+//         <label for="lname">Last name</label><br>
+//         <input type="text" id="lname" name="name" required><br><br>
+//         <label for="email">Email Address</label><br>
+//         <input type="email" id="email" name="email" required><br><br>
+//         <label for="phone">Phone No.</label><br>
+//         <input type="tel" id="phone"name="phone" 
+//         pattern="[0-9]{10}" required><br><br>
+//         <input type="submit" value="Submit">
+//     </form>
+
+// <form action="mailto:{emailaddress}" method="post"
+// onsubmit="validate()" enctype="text/plain">
+//     <label for="name">Name</label>
+//     <input type="text" id="name" name="name" required><br><br>
+//     <label for="email">Email</label>
+//     <input type="email" id="email"
+//     name="email" required><br><br>
+//     <label for="phone">Phone</label>
+//     <input type="tel" id="phone"name="phone" 
+//     pattern="[0-9]{10}" required><br><br>
+</script>
+
 </body>
+
+<style>
+  .container {
+    justify-content: center;
+  }
+</style>
 <!-- Code Attribution:
 Varsity College. 2024
 WEDE5020/d/p/w MODULE MANUAL/GUIDE 2024 (First Edition: 2012)
